@@ -13,9 +13,13 @@ const random = Math.random();
 let unknownObject;
 
 if (random > 0.5) {
-    unknownObject = path.resolve('./files/a.json');;
+    unknownObject = await import('./files/a.json', {
+        assert: { type: 'json' },
+    });
 } else {
-    unknownObject = path.resolve('./files/b.json');;
+    unknownObject = await import('./files/b.json', {
+        assert: { type: 'json' },
+    });
 }
 
 console.log(`Release ${release()}`);
